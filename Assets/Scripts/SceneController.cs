@@ -5,22 +5,48 @@ using UnityEngine;
 public class SceneController : MonoBehaviour
 {
     [SerializeField]
+    private Transform iguanaSpawnPt;
+
+    [SerializeField] 
+    private GameObject iguanaPrefab;
+
+    [SerializeField]
     private GameObject enemyPrefab;
+
     private GameObject enemy;
     private int enemyCount = 4;
     private GameObject[] enemyArray;
+
+    private GameObject iguana;
+    private int iguanaCount = 8;
+    private GameObject[] iguanaArray;
+
     private Vector3 spawnPoint = new Vector3(0, 0, 5);
 
     private void Start()
     {
-        // array
+        // enemy array
         enemyArray = new GameObject[enemyCount];
 
-        // fill array with enemies
+        // iguana array
+        iguanaArray = new GameObject[iguanaCount];
+
+        // instatiate enemies
+        // fill enemy array with enemies
         for (int i = 0; i <= enemyCount - 1 ; i++)
         {
             enemy = Instantiate(enemyPrefab) as GameObject;
             enemyArray[i] = enemy;
+        }
+        // instantiate iguanas
+        // fill iguana array
+        for (int y = 0; y <= iguanaCount - 1; y++)
+        {
+            iguana = Instantiate(iguanaPrefab) as GameObject;
+            iguanaArray[y] = iguana;
+            iguanaArray[y].transform.position = iguanaSpawnPt.position;
+            float angle = Random.Range(0, 360);
+            iguanaArray[y].transform.Rotate(0, angle, 0);
         }
     }
     // Update is called once per frame
@@ -36,6 +62,10 @@ public class SceneController : MonoBehaviour
                 enemyArray[i].transform.Rotate(0, angle, 0);
             }
         }
+
+
+
+        
 
         //if (enemy == null)
         //{
