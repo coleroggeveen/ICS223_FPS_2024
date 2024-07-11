@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
 
-public class MouseLook : MonoBehaviour
+public class MouseLook : ActiveDuringGameplay
 {
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -53,5 +55,6 @@ public class MouseLook : MonoBehaviour
 
         }
     }
+
 }
 

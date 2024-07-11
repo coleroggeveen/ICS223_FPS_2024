@@ -215,7 +215,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settingsPopup: {fileID: 248683799}
-  uiController: {fileID: 1988888505}
 --- !u!43 &68732566
 Mesh:
   m_ObjectHideFlags: 0
@@ -1517,7 +1516,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 14.365173, y: -3.8215027}
+  m_AnchoredPosition: {x: 14.365173, y: -3.8215332}
   m_SizeDelta: {x: -545.2716, y: -291.9586}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &248683799
@@ -3391,6 +3390,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f747968779cfdd4180a4c6588054fe7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ui: {fileID: 1988888505}
   iguanaSpawnPt: {fileID: 1862336198}
   iguanaPrefab: {fileID: 141256, guid: b4806bcfd71324778b360c0299195b34, type: 3}
   enemyPrefab: {fileID: 442912068254689179, guid: 5f3a2e18ccd8514438eab996328d6bf8, type: 3}
@@ -4617,8 +4617,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 131.84872, y: -55}
-  m_SizeDelta: {x: 257, y: 76}
+  m_AnchoredPosition: {x: 158.28577, y: -55}
+  m_SizeDelta: {x: 358.9052, y: 76}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &920459824
 MonoBehaviour:
@@ -4640,12 +4640,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 575214534, guid: 7146f89077ead2542bf1ad7bca470bdc, type: 3}
+  m_Sprite: {fileID: -1868287931, guid: 7146f89077ead2542bf1ad7bca470bdc, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.85
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0

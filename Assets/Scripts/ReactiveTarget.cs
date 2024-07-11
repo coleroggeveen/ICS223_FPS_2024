@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ReactiveTarget : MonoBehaviour
 {
+    private bool isAlive = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +32,11 @@ public class ReactiveTarget : MonoBehaviour
             enemyAnimator.SetTrigger("Die");
         }
 
+        if (isAlive)
+        {
+            isAlive = false;
+            Messenger.Broadcast(GameEvent.ENEMY_DEAD);
+        }
         //StartCoroutine(Die());
     }
 

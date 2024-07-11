@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SettingsPopup : MonoBehaviour
+public class SettingsPopup : BasePopup
 {
     [SerializeField] private TextMeshProUGUI difficultyLabel;
     [SerializeField] private Slider difficultySlider;
@@ -24,27 +24,29 @@ public class SettingsPopup : MonoBehaviour
     public void OnOKButton()
     {
         PlayerPrefs.SetInt("difficulty", (int)difficultySlider.value);
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
+        this.Close();
         optionsPopup.Open();
+        Messenger<int>.Broadcast(GameEvent.DIFFICULTY_CHANGED, (int)difficultySlider.value);
     }
 
-    public void Open()
+    override public void Open()
     {
-        gameObject.SetActive(true);
+        base.Open();
         difficultySlider.value = PlayerPrefs.GetInt("difficulty", 1);
         UpdateDifficulty(difficultySlider.value);
     }
 
-    public void Close()
+    override public void Close()
     {
-        gameObject.SetActive(false);
+        base.Close();
         optionsPopup.Open();
     }
 
-    public bool IsActive()
-    {
-        return gameObject.activeSelf;
-    }
+    //public bool IsActive()
+    //{
+    //    return gameObject.activeSelf;
+    //}
 
     public void UpdateDifficulty(float difficulty)
     {
