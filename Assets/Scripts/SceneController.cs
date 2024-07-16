@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
@@ -66,12 +67,12 @@ public class SceneController : MonoBehaviour
     void Update()
     {
         difficulty = GetDifficulty();
-        
-        for (int i = 0; i <= enemyCount - 1; i++)
+
+        for (int i = 0; i <= enemyCount - 1; i++)                        // temp commenting
         {
             if (enemyArray[i] == null)
             {
-                
+
                 enemyArray[i] = Instantiate(enemyPrefab) as GameObject;
                 enemyArray[i].transform.position = spawnPoint;
                 float angle = Random.Range(0, 360);
@@ -79,30 +80,22 @@ public class SceneController : MonoBehaviour
                 CurrentDifficulty(difficulty);
             }
         }
-
-
-
-        
-
-        //if (enemy == null)
-        //{
-         //   enemy = Instantiate(enemyPrefab) as GameObject;
-         //   enemy.transform.position = spawnPoint;
-          //  float angle = Random.Range(0, 360);
-          //  enemy.transform.Rotate(0, angle, 0);
-        //}
     }
 
     private void Awake()
     {
         Messenger.AddListener(GameEvent.ENEMY_DEAD, OnEnemyDead);
         Messenger<int>.AddListener(GameEvent.DIFFICULTY_CHANGED, OnDifficultyChanged);
+        Messenger.AddListener(GameEvent.PLAYER_DEAD, OnPlayerDead);
+        Messenger.AddListener(GameEvent.RESTART_GAME, OnRestartGame);
     }
 
     private void OnDestroy()
     {
         Messenger.RemoveListener(GameEvent.ENEMY_DEAD, OnEnemyDead);
         Messenger<int>.RemoveListener(GameEvent.DIFFICULTY_CHANGED, OnDifficultyChanged);
+        Messenger.RemoveListener(GameEvent.PLAYER_DEAD, OnPlayerDead);
+        Messenger.RemoveListener(GameEvent.RESTART_GAME, OnRestartGame);
     }
 
     private void OnEnemyDead()
@@ -129,5 +122,15 @@ public class SceneController : MonoBehaviour
     private void CurrentDifficulty(int difficulty)
     {
         OnDifficultyChanged(difficulty);
+    }
+
+    private void OnPlayerDead()
+    {
+        ui.ShowGameOverPopup();
+    }
+
+    public void OnRestartGame()
+    {
+        SceneManager.LoadScene(0);
     }
 }
